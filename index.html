@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Àcids i Bases - 2n Batxillerat</title>
+<style>
+/* Theme Variables */
+:root {
+  --font-family-display: Arial, sans-serif;
+  --font-weight-display: 600;
+  --font-family-content: Arial, sans-serif;
+  --font-weight-content: 400;
+  --font-size-content: 16px;
+  --line-height-content: 1.4;
+}
+
+/* DARK THEME */
+body.theme-dark {
+  --color-bg-base: #0f172a;
+  --color-bg-elevated: #020617;
+  --color-bg-surface: #1e293b;
+  --color-bg-muted: #334155;
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #94a3b8;
+  --color-text-accent: #38bdf8;
+  --color-primary: #38bdf8;
+  --color-primary-foreground: #0f172a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-content);
+  font-weight: var(--font-weight-content);
+  font-size: var(--font-size-content);
+  line-height: var(--line-height-content);
+  overflow-x: hidden;
+}
+
+.slide {
+  width: 960px;
+  height: 540px;
+  margin: 0 auto 20px;
+  display: flex;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.row { flex-direction: row; }
+.col { flex-direction: column; }
+.center {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.space-between { justify-content: space-between; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.fill-width { flex: 1; }
+
+.gap-sm { gap: 0.5rem; }
+.gap-md { gap: 1rem; }
+.gap-lg { gap: 1.5rem; }
+.gap-xl { gap: 2rem; }
+
+.p-4 { padding: 1rem; }
+.p-6 { padding: 1.5rem; }
+.p-8 { padding: 2rem; }
+.p-12 { padding: 3rem; }
+.p-16 { padding: 4rem; }
+
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+.mt-4 { margin-top: 1rem; }
+.mt-6 { margin-top: 1.5rem; }
+.mt-8 { margin-top: 2rem; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-display);
+  line-height: 1.2;
+  margin: 0;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.25rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+
+.text-6xl { font-size: 3.75rem; }
+.text-5xl { font-size: 3rem; }
+.text-4xl { font-size: 2.25rem; }
+.text-3xl { font-size: 1.875rem; }
+.text-2xl { font-size: 1.5rem; }
+.text-xl { font-size: 1.25rem; }
+.text-lg { font-size: 1.125rem; }
+.text-base { font-size: 1rem; }
+.text-sm { font-size: 0.875rem; }
+
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.text-center { text-align: center; }
+
+.opacity-90 { opacity: 0.9; }
+.opacity-80 { opacity: 0.8; }
+
+ul, ol {
+  margin-left: 2rem;
+  line-height: 1.8;
+}
+
+ul li { list-style: disc; }
+li { margin-bottom: 0.75rem; }
+li:last-child { margin-bottom: 0; }
+
+.ph-scale-visual {
+  display: flex;
+  height: 40px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+.ph-segment-visual {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+</style>
+</head>
+<body class="theme-dark">
+
+<!-- Slide 1: Title -->
+<section class="slide p-16 col center" style="background-color: #020617; color: #f1f5f9;">
+  <h1 class="text-6xl mb-4" style="color: #38bdf8;">🧪 Àcids i Bases</h1>
+  <p class="text-2xl mb-6" style="color: #cbd5e1;">Química 2n Batxillerat</p>
+  <p class="text-lg" style="color: #94a3b8;">IES Districte Marítim</p>
+  <p class="text-base" style="color: #94a3b8;">Departament de Física i Química</p>
+</section>
+
+<!-- Slide 2: Índex -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-6" style="color: #38bdf8;">Índex de Continguts</h2>
+  <ul class="text-lg" style="color: #cbd5e1;">
+    <li>Evolució històrica dels models àcid-base</li>
+    <li>Models d'Arrhenius i Brønsted-Lowry</li>
+    <li>Força d'àcids i bases</li>
+    <li>Constants d'equilibri (Ka, Kb, Kw)</li>
+  </ul>
+</section>
+
+<!-- Slide 3: Evolució Històrica Part 1 -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-6" style="color: #38bdf8;">Evolució Històrica (I)</h2>
+  <div class="fill-width">
+    <p class="text-lg mb-4" style="color: #cbd5e1;"><strong style="color: #38bdf8;">Lavoisier (1743-1794):</strong></p>
+    <p class="text-base mb-4" style="color: #cbd5e1;">Proposà que l'oxigen era l'element característic dels àcids.</p>
+    
+    <p class="text-lg mb-4 mt-6" style="color: #cbd5e1;"><strong style="color: #38bdf8;">Davy (1810):</strong></p>
+    <p class="text-base" style="color: #cbd5e1;">Demostrà que HCl i HF no contenen oxigen. El veritable "principi acidificant" era l'hidrogen.</p>
+  </div>
+</section>
+
+<!-- Slide 4: Evolució Històrica Part 2 -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-6" style="color: #38bdf8;">Evolució Històrica (II)</h2>
+  <div class="fill-width">
+    <p class="text-lg mb-4" style="color: #cbd5e1;"><strong style="color: #38bdf8;">Liebig (1838):</strong></p>
+    <p class="text-base mb-4" style="color: #cbd5e1;">Àcids = substàncies amb hidrogen reemplaçable per metalls.</p>
+    
+    <p class="text-lg mb-4 mt-6" style="color: #cbd5e1;"><strong style="color: #38bdf8;">Arrhenius (1884):</strong></p>
+    <p class="text-base" style="color: #cbd5e1;">Primera definició moderna basada en ionització en aigua.</p>
+  </div>
+</section>
+
+<!-- Slide 5: Model Arrhenius -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-6" style="color: #38bdf8;">Model d'Arrhenius (1884)</h2>
+  <div style="background-color: #1e293b; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
+    <p class="text-lg mb-4" style="color: #38bdf8;"><strong>Àcid:</strong></p>
+    <p class="text-base mb-4" style="color: #cbd5e1;">Substància que es ionitza en aigua per donar H⁺ (H₃O⁺)</p>
+    <p class="text-base" style="color: #94a3b8; font-family: monospace;">HCl → H⁺ + Cl⁻</p>
+  </div>
+  <div style="background-color: #1e293b; padding: 1.5rem; border-radius: 8px;">
+    <p class="text-lg mb-4" style="color: #38bdf8;"><strong>Base:</strong></p>
+    <p class="text-base mb-4" style="color: #cbd5e1;">Substància que es ionitza en aigua per donar OH⁻</p>
+    <p class="text-base" style="color: #94a3b8; font-family: monospace;">NaOH → Na⁺ + OH⁻</p>
+  </div>
+</section>
+
+<!-- Slide 6: Model Brønsted-Lowry -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-6" style="color: #38bdf8;">Model de Brønsted-Lowry (1923)</h2>
+  <div style="background-color: #1e293b; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
+    <p class="text-lg mb-4" style="color: #38bdf8;"><strong>Àcid:</strong></p>
+    <p class="text-base" style="color: #cbd5e1;">Donador de protons (H⁺)</p>
+  </div>
+  <div style="background-color: #1e293b; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
+    <p class="text-lg mb-4" style="color: #38bdf8;"><strong>Base:</strong></p>
+    <p class="text-base" style="color: #cbd5e1;">Acceptor de protons (H⁺)</p>
+  </div>
+  <p class="text-base" style="color: #94a3b8;">✓ Més general que Arrhenius (funciona en dissolvents no aquosos)</p>
+</section>
+
+<!-- Slide 7: Parells Conjugats -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-6" style="color: #38bdf8;">Parells Àcid-Base Conjugats</h2>
+  <div style="background-color: #1e293b; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
+    <p class="text-base mb-4" style="color: #cbd5e1; text-align: center; font-family: monospace;">HA + H₂O ⇌ A⁻ + H₃O⁺</p>
+    <p class="text-sm" style="color: #94a3b8; text-align: center;">àcid₁ + base₂ ⇌ base conjugada₁ + àcid conjugat₂</p>
+  </div>
+  <ul class="text-lg" style="color: #cbd5e1;">
+    <li>HCl / Cl⁻</li>
+    <li>CH₃COOH / CH₃COO⁻</li>
+    <li>NH₄⁺ / NH₃</li>
+  </ul>
+</section>
+
+<!-- Slide 8: Força d'Àcids i Bases -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-6" style="color: #38bdf8;">Força d'Àcids i Bases</h2>
+  <div style="background-color: #1e293b; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+    <p class="text-base" style="color: #cbd5e1; text-align: center;">Grau de dissociació: α = (quantitat ionitzada / quantitat inicial) × 100%</p>
+  </div>
+  <div class="row gap-lg">
+    <div class="fill-width" style="background-color: #1e293b; padding: 1.5rem; border-radius: 8px;">
+      <h3 class="mb-4" style="color: #38bdf8; font-size: 1.25rem;">Àcids/Bases Forts</h3>
+      <p style="color: #cbd5e1;">α ≈ 100%</p>
+    </div>
+    <div class="fill-width" style="background-color: #1e293b; padding: 1.5rem; border-radius: 8px;">
+      <h3 class="mb-4" style="color: #38bdf8; font-size: 1.25rem;">Àcids/Bases Dèbils</h3>
+      <p style="color: #cbd5e1;">α &lt; 1%</p>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 9: Àcids Forts -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-6" style="color: #38bdf8;">Àcids Forts (α ≈ 100%)</h2>
+  <ul class="text-xl" style="color: #cbd5e1;">
+    <li>HCl - Àcid clorhídric</li>
+    <li>HNO₃ - Àcid nítric</li>
+    <li>H₂SO₄ - Àcid sulfúric</li>
+    <li>HClO₄ - Àcid perclòric</li>
+  </ul>
+</section>
+
+<!-- Slide 10: Bases Fortes -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-6" style="color: #38bdf8;">Bases Fortes (α ≈ 100%)</h2>
+  <ul class="text-xl" style="color: #cbd5e1;">
+    <li>NaOH - Hidròxid de sodi</li>
+    <li>KOH - Hidròxid de potassi</li>
+    <li>Ca(OH)₂ - Hidròxid de calci</li>
+    <li>Ba(OH)₂ - Hidròxid de bari</li>
+  </ul>
+</section>
+
+<!-- Slide 11: Autoionització de l'aigua -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-8" style="color: #38bdf8;">Autoionització de l'Aigua</h2>
+  <div style="background-color: #1e293b; padding: 2rem; border-radius: 8px;">
+    <p class="text-xl mb-6" style="color: #cbd5e1; text-align: center; font-family: monospace;">H₂O ⇌ H⁺ + OH⁻</p>
+    <p class="text-2xl mb-6" style="color: #38bdf8; text-align: center; font-family: monospace;">Kw = [H⁺][OH⁻] = 1,0 × 10⁻¹⁴</p>
+    <p class="text-lg" style="color: #cbd5e1; text-align: center;">(a 25°C)</p>
+  </div>
+</section>
+
+<!-- Slide 12: Constants Ka i Kb -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-6" style="color: #38bdf8;">Constants d'Acidesa (Ka) i Basicitat (Kb)</h2>
+  <div style="background-color: #1e293b; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
+    <p class="text-lg mb-2" style="color: #38bdf8;"><strong>Constant d'acidesa:</strong></p>
+    <p class="text-base" style="color: #cbd5e1; font-family: monospace;">Ka = [H⁺][A⁻] / [HA]</p>
+  </div>
+  <div style="background-color: #1e293b; padding: 1.5rem; border-radius: 8px;">
+    <p class="text-lg mb-2" style="color: #38bdf8;"><strong>Constant de basicitat:</strong></p>
+    <p class="text-base" style="color: #cbd5e1; font-family: monospace;">Kb = [BH⁺][OH⁻] / [B]</p>
+  </div>
+  <p class="text-base mt-6" style="color: #94a3b8; text-align: center;">Com més gran Ka/Kb → més fort l'àcid/base</p>
+</section>
+
+<!-- Slide 13: pH i pOH -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-8" style="color: #38bdf8;">Escala de pH i pOH</h2>
+  <div style="background-color: #1e293b; padding: 2rem; border-radius: 8px;">
+    <p class="text-xl mb-4" style="color: #cbd5e1; text-align: center; font-family: monospace;">pH = -log[H⁺]</p>
+    <p class="text-xl mb-4" style="color: #cbd5e1; text-align: center; font-family: monospace;">pOH = -log[OH⁻]</p>
+    <p class="text-2xl" style="color: #38bdf8; text-align: center; font-family: monospace; font-weight: bold;">pH + pOH = 14</p>
+  </div>
+</section>
+
+<!-- Slide 14: Escala pH Visual -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-6" style="color: #38bdf8;">Escala de pH (0-14)</h2>
+  <div class="ph-scale-visual">
+    <div class="ph-segment-visual" style="background-color: #c00000;">0</div>
+    <div class="ph-segment-visual" style="background-color: #e00000;">1</div>
+    <div class="ph-segment-visual" style="background-color: #ff0000;">2</div>
+    <div class="ph-segment-visual" style="background-color: #ff4500;">3</div>
+    <div class="ph-segment-visual" style="background-color: #ff8c00;">4</div>
+    <div class="ph-segment-visual" style="background-color: #ffa500;">5</div>
+    <div class="ph-segment-visual" style="background-color: #ffd700;">6</div>
+    <div class="ph-segment-visual" style="background-color: #00ff00;">7</div>
+    <div class="ph-segment-visual" style="background-color: #00ffff;">8</div>
+    <div class="ph-segment-visual" style="background-color: #0099ff;">9</div>
+    <div class="ph-segment-visual" style="background-color: #0066ff;">10</div>
+    <div class="ph-segment-visual" style="background-color: #0033ff;">11</div>
+    <div class="ph-segment-visual" style="background-color: #0000ff;">12</div>
+    <div class="ph-segment-visual" style="background-color: #000099;">13</div>
+    <div class="ph-segment-visual" style="background-color: #000066;">14</div>
+  </div>
+  <p class="text-lg mt-6" style="color: #cbd5e1; text-align: center;">
+    <span style="color: #ff4500;">← ÀCID</span> &nbsp;&nbsp;&nbsp; 
+    <span style="color: #00ff00;">NEUTRE (7)</span> &nbsp;&nbsp;&nbsp;
+    <span style="color: #0066ff;">BASE →</span>
+  </p>
+  <div style="margin-top: 2rem; text-align: center;">
+    <img src="https://r2cdn.perplexity.ai/pplx-res-v2/ff1e5cf0-a1cc-413d-b2e6-bf9e6b6e5f34/user_attachments/fc976e60dd62/5ade04e4-08d9-4c7b-931f-ed48b64e1b3d.jpg?Expires=1738530568&Signature=0~-R5YSqoxmL~iAiJg-XU5~dxBM5W-IKRs~ZuPf1RWJvb6D7ziFcEkR39MF1JJYLvjfOYSiKfOFq2hQDCh9WqZ4mG8OPRIp6QcJQHN6YJCQPcpXO6WyIFyy~7XZw~O-S5q8o6EPPAc3jOsRGKEvPdWaRwQXLHiICLTt-e-ej7bkw7bNLlKk9OQkXNAzqWHILG8wX9PoNmebLpljLHOdlWbhAeH2CRNQrEDBkw1KoFYPWW4rMSsHqgx8w6r68eXZc-N8pSf5QSiVVZ5r1F1JH3CkeBsIgJP7LMXFsVpUGsjOOPy4KGJzCJ0J6l6HVBVd0dGCeKbp8RtJZdpUJ4IXXmw__&Key-Pair-Id=K24J24Z295J1HE" alt="Escala pH amb exemples" style="max-width: 100%; height: auto; max-height: 150px; border-radius: 8px;">
+  </div>
+</section>
+
+<!-- Slide 15: Exemples pH Substàncies -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-4" style="color: #38bdf8;">Exemples de pH</h2>
+  <ul class="text-lg" style="color: #cbd5e1;">
+    <li>Àcid de bateria: pH = 0</li>
+    <li>Suc gàstric: pH = 1,7</li>
+    <li>Poma: pH = 3,7</li>
+    <li>Cafè: pH = 5</li>
+    <li>Llet: pH = 6,5</li>
+  </ul>
+</section>
+
+<!-- Slide 16: Exemples pH Part 2 -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-4" style="color: #38bdf8;">Exemples de pH (II)</h2>
+  <ul class="text-lg" style="color: #cbd5e1;">
+    <li>Aigua pura: pH = 7</li>
+    <li>Sang: pH = 7,4</li>
+    <li>Aigua de mar: pH = 8,1</li>
+    <li>Amoníac: pH = 11</li>
+    <li>Lleixiu: pH = 13,5</li>
+  </ul>
+</section>
+
+<!-- Slide 17: Hidròlisi de Sals Introducció -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-6" style="color: #38bdf8;">Hidròlisi de Sals</h2>
+  <p class="text-lg mb-6" style="color: #cbd5e1;">Quan una sal es dissol en aigua, els ions poden reaccionar amb H₂O i modificar el pH.</p>
+  <div style="background-color: #1e293b; padding: 1.5rem; border-radius: 8px;">
+    <p class="text-base" style="color: #cbd5e1; text-align: center;">El pH resultant depèn de la força de l'àcid i la base d'on prové la sal.</p>
+  </div>
+</section>
+
+<!-- Slide 18: Hidròlisi Cas 1 -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-6" style="color: #38bdf8;">Hidròlisi: Àcid Fort + Base Forta</h2>
+  <div style="background-color: #1e293b; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
+    <p class="text-lg mb-2" style="color: #cbd5e1;"><strong>Exemples:</strong> NaCl, KNO₃</p>
+  </div>
+  <p class="text-xl mb-4" style="color: #38bdf8; text-align: center;">pH = 7 (NEUTRE)</p>
+  <p class="text-base" style="color: #cbd5e1;">Els ions no hidrolitzen perquè provenen d'espècies completament ionitzades.</p>
+</section>
+
+<!-- Slide 19: Hidròlisi Cas 2 -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-4" style="color: #38bdf8;">Hidròlisi: Àcid Dèbil + Base Forta</h2>
+  <div style="background-color: #1e293b; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
+    <p class="text-lg mb-2" style="color: #cbd5e1;"><strong>Exemples:</strong> CH₃COONa, NaCN</p>
+  </div>
+  <p class="text-xl mb-4" style="color: #38bdf8; text-align: center;">pH > 7 (BÀSIC)</p>
+  <p class="text-base mb-2" style="color: #cbd5e1;">L'anió hidrolitza:</p>
+  <p class="text-base" style="color: #94a3b8; font-family: monospace; text-align: center;">A⁻ + H₂O → HA + OH⁻</p>
+</section>
+
+<!-- Slide 20: Hidròlisi Cas 3 -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-4" style="color: #38bdf8;">Hidròlisi: Àcid Fort + Base Dèbil</h2>
+  <div style="background-color: #1e293b; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
+    <p class="text-lg mb-2" style="color: #cbd5e1;"><strong>Exemples:</strong> NH₄Cl, NH₄NO₃</p>
+  </div>
+  <p class="text-xl mb-4" style="color: #38bdf8; text-align: center;">pH &lt; 7 (ÀCID)</p>
+  <p class="text-base mb-2" style="color: #cbd5e1;">El catió hidrolitza:</p>
+  <p class="text-base" style="color: #94a3b8; font-family: monospace; text-align: center;">NH₄⁺ + H₂O → NH₃ + H₃O⁺</p>
+</section>
+
+<!-- Slide 21: Dissolucions Reguladores -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-6" style="color: #38bdf8;">Dissolucions Reguladores (Tampó)</h2>
+  <p class="text-lg mb-6" style="color: #cbd5e1;">Mantenen el pH pràcticament constant malgrat afegir petites quantitats d'àcid o base.</p>
+  <ul class="text-base" style="color: #cbd5e1;">
+    <li>Àcid dèbil + sal de la seva base conjugada</li>
+    <li>Base dèbil + sal del seu àcid conjugat</li>
+  </ul>
+</section>
+
+<!-- Slide 22: Henderson-Hasselbalch -->
+<section class="slide p-16 col center" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-8" style="color: #38bdf8;">Equació de Henderson-Hasselbalch</h2>
+  <div style="background-color: #1e293b; padding: 2rem; border-radius: 8px; width: 100%;">
+    <p class="text-2xl" style="color: #38bdf8; text-align: center; font-family: monospace; font-weight: bold;">pH = pKa + log([base]/[àcid])</p>
+  </div>
+  <div style="margin-top: 2rem; text-align: center;">
+    <img src="https://r2cdn.perplexity.ai/pplx-res-v2/ff1e5cf0-a1cc-413d-b2e6-bf9e6b6e5f34/user_attachments/fc976e60dd62/5c56c9a4-ba64-487a-8a51-3a2ff53e62c5.jpg?Expires=1738530568&Signature=Sst3vJqO-8A5LU7O9PWiCg~B5Q5yqhp5TJfN40HjWqGNvD~YuU2P4pF7PG5eZvISnV1e~3q9v5mfzTQtVyv6~Lz~E34nFKSNdD7PmHmZTx4q72i0xyGl1MucTDKH-Gq53XNpJkgpvOcI1i9M1G8EXHLHdT50Tr-9M6Kl7ugbJo5Aa9pj98r0Lzd1V0APIPPiX3C2VUOikrjkT0WBM1qnWbOmFpEIpmUWYnb2I~pIFzKX4GXBsw36kVfBMb8nGZdQ0DwQg3gZTXpPOST8pT7GlC~5M1Gp~9cqGzqQWHGWVwwxfh7AUqH90KNQqGmN3luhP77FnBOqjX5dXfCgCawJXg__&Key-Pair-Id=K24J24Z295J1HE" alt="Henderson-Hasselbalch visual" style="max-width: 100%; height: auto; max-height: 180px; border-radius: 8px;">
+  </div>
+</section>
+
+<!-- Slide 23: Importància Biològica -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-6" style="color: #38bdf8;">Importància Biològica del pH</h2>
+  <ul class="text-lg" style="color: #cbd5e1;">
+    <li><strong style="color: #38bdf8;">Sang:</strong> Tampó H₂CO₃/HCO₃⁻ manté pH = 7,40 ± 0,05</li>
+    <li><strong style="color: #38bdf8;">Interior cel·lular:</strong> Tampó H₂PO₄⁻/HPO₄²⁻ manté pH ≈ 6,86</li>
+  </ul>
+</section>
+
+<!-- Slide 24: Volumetries -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-6" style="color: #38bdf8;">Volumetries de Neutralització</h2>
+  <p class="text-lg mb-4" style="color: #cbd5e1;">Mètode per determinar la concentració d'un àcid o base desconegut.</p>
+  <div style="background-color: #1e293b; padding: 1.5rem; border-radius: 8px;">
+    <p class="text-xl" style="color: #38bdf8; text-align: center; font-family: monospace;">C<sub>àcid</sub> × V<sub>àcid</sub> = C<sub>base</sub> × V<sub>base</sub></p>
+  </div>
+  <div style="margin-top: 1.5rem; text-align: center;">
+    <img src="https://r2cdn.perplexity.ai/pplx-res-v2/ff1e5cf0-a1cc-413d-b2e6-bf9e6b6e5f34/user_attachments/fc976e60dd62/db2d0e53-dccd-46de-ba6b-1e3c025b89e2.jpg?Expires=1738530568&Signature=a6Kxjyi1K2YmXKElJDTwO9R7nHU0aMLiV0dAA7Rmi17RL4tDHm0BFPcUz9Rv6gGnf6JTtb~M0gK0FRo7D3jWVaCkT6lIH-dIvbHQxcOCQjzODkYDZ4GYdvnUcFfZqUlw8qLQsL~W8u3LRMSuwgkpTQk5~ebtdDWxPX49WLDi5k-uyc60mZ~SNVDZ0hAkkPAUxVNOqQm2Yf0MPQe60z4~5rIDQJhQHfJEVL5OJiM1~CsqZiX-zEGc~EqpRyG3Nua6OZu8VVVZ6dHlYW6N0m-BzNWgDaXpWQBqyNVTWN1ZywZsHDJRrRmCp~BQXslOu~hA4QpxKAO2gE~0NvLABpLpLg__&Key-Pair-Id=K24J24Z295J1HE" alt="Corbes de valoració" style="max-width: 100%; height: auto; max-height: 160px; border-radius: 8px;">
+  </div>
+</section>
+
+<!-- Slide 25: Indicadors -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-4" style="color: #38bdf8;">Indicadors Àcid-Base</h2>
+  <ul class="text-base" style="color: #cbd5e1;">
+    <li><strong style="color: #38bdf8;">Metilorange:</strong> pH 3,1-4,4 (vermell → groc)</li>
+    <li><strong style="color: #38bdf8;">Bromotimol blau:</strong> pH 6,0-7,6 (groc → blau)</li>
+    <li><strong style="color: #38bdf8;">Fenolftaleïna:</strong> pH 8,2-10,0 (incolor → rosa)</li>
+    <li><strong style="color: #38bdf8;">Tornasol:</strong> pH &lt;4,5 vermell, pH &gt;8,3 blau</li>
+  </ul>
+</section>
+
+<!-- Slide 26: Pluja Àcida -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-6" style="color: #38bdf8;">Pluja Àcida</h2>
+  <p class="text-lg mb-4" style="color: #cbd5e1;">Es considera pluja àcida si pH &lt; 5,5</p>
+  <div style="background-color: #1e293b; padding: 1.5rem; border-radius: 8px;">
+    <p class="text-base mb-2" style="color: #cbd5e1;"><strong>Causes:</strong></p>
+    <ul style="color: #cbd5e1;">
+      <li>Òxids de sofre (SOx) i nitrogen (NOx)</li>
+      <li>Reaccionen amb H₂O atmosfèrica</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Slide 27: Reaccions Pluja Àcida -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-6" style="color: #38bdf8;">Formació d'Àcid Sulfúric</h2>
+  <div style="background-color: #1e293b; padding: 1.5rem; border-radius: 8px;">
+    <p class="text-lg mb-4" style="color: #cbd5e1; font-family: monospace; text-align: center;">SO₂ + H₂O → H₂SO₃</p>
+    <p class="text-lg mb-4" style="color: #cbd5e1; font-family: monospace; text-align: center;">2 SO₂ + O₂ → 2 SO₃</p>
+    <p class="text-xl" style="color: #38bdf8; font-family: monospace; text-align: center; font-weight: bold;">SO₃ + H₂O → H₂SO₄</p>
+  </div>
+</section>
+
+<!-- Slide 28: Efectes Pluja Àcida -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-6" style="color: #38bdf8;">Efectes de la Pluja Àcida</h2>
+  <ul class="text-lg" style="color: #cbd5e1;">
+    <li>Acidificació de llacs i rius</li>
+    <li>Dissolució de carbonats (monuments)</li>
+    <li>Danys a vegetació</li>
+    <li>Mortaldat de peixos i ecosistemes aquàtics</li>
+  </ul>
+</section>
+
+<!-- Slide 29: Solucions -->
+<section class="slide p-16 col" style="background-color: #0f172a; color: #f1f5f9;">
+  <h2 class="mb-6" style="color: #38bdf8;">Solucions i Prevenció</h2>
+  <ul class="text-lg" style="color: #cbd5e1;">
+    <li>Reducció d'emissions SOx i NOx</li>
+    <li>Energies renovables</li>
+    <li>Catalitzadors en vehicles</li>
+    <li>Neutralització amb CaCO₃</li>
+  </ul>
+</section>
+
+<!-- Slide 30: Final -->
+<section class="slide p-16 col center" style="background-color: #020617; color: #f1f5f9;">
+  <h2 class="text-5xl mb-6" style="color: #38bdf8;">Gràcies!</h2>
+  <p class="text-xl" style="color: #cbd5e1;">Preguntes?</p>
+  <p class="text-base mt-8" style="color: #94a3b8;">IES Districte Marítim</p>
+  <p class="text-sm" style="color: #94a3b8;">Departament de Física i Química</p>
+</section>
+
+</body>
+</html>
