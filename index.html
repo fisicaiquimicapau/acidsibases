@@ -1,0 +1,2270 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Recurs educatiu interactiu sobre àcids i bases per a 2n de Batxillerat. Teoria, exemples i quizzes interactius sobre Arrhenius, Brønsted-Lowry, pH i hidròlisi de sals.">
+<meta name="keywords" content="àcids, bases, química, batxillerat, pH, Arrhenius, Brønsted-Lowry, hidròlisi, educació">
+<meta name="author" content="IES Districte Marítim">
+<title>🧪 La Química dels Àcids i Bases - IES Districte Marítim</title>
+<style>
+:root {
+  --color-white: rgba(255, 255, 255, 1);
+  --color-black: rgba(0, 0, 0, 1);
+  --color-cream-50: rgba(252, 252, 249, 1);
+  --color-cream-100: rgba(255, 255, 253, 1);
+  --color-gray-200: rgba(245, 245, 245, 1);
+  --color-gray-300: rgba(167, 169, 169, 1);
+  --color-gray-400: rgba(119, 124, 124, 1);
+  --color-slate-500: rgba(98, 108, 113, 1);
+  --color-brown-600: rgba(94, 82, 64, 1);
+  --color-charcoal-700: rgba(31, 33, 33, 1);
+  --color-charcoal-800: rgba(38, 40, 40, 1);
+  --color-slate-900: rgba(19, 52, 59, 1);
+  --color-teal-300: rgba(50, 184, 198, 1);
+  --color-teal-400: rgba(45, 166, 178, 1);
+  --color-teal-500: rgba(33, 128, 141, 1);
+  --color-teal-600: rgba(29, 116, 128, 1);
+  --color-teal-700: rgba(26, 104, 115, 1);
+  --color-teal-800: rgba(41, 150, 161, 1);
+  --color-red-400: rgba(255, 84, 89, 1);
+  --color-red-500: rgba(192, 21, 47, 1);
+  --color-orange-400: rgba(230, 129, 97, 1);
+  --color-orange-500: rgba(168, 75, 47, 1);
+
+  --color-bg-1: rgba(59, 130, 246, 0.08);
+  --color-bg-2: rgba(245, 158, 11, 0.08);
+  --color-bg-3: rgba(34, 197, 94, 0.08);
+  --color-bg-4: rgba(239, 68, 68, 0.08);
+  --color-bg-5: rgba(147, 51, 234, 0.08);
+
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-text: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-500);
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+  --color-primary-active: var(--color-teal-700);
+  --color-secondary: rgba(94, 82, 64, 0.12);
+  --color-secondary-hover: rgba(94, 82, 64, 0.2);
+  --color-border: rgba(94, 82, 64, 0.2);
+  --color-btn-primary-text: var(--color-cream-50);
+  --color-card-border: rgba(94, 82, 64, 0.12);
+  --color-error: var(--color-red-500);
+  --color-success: var(--color-teal-500);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--color-charcoal-700);
+    --color-surface: var(--color-charcoal-800);
+    --color-text: var(--color-gray-200);
+    --color-text-secondary: rgba(167, 169, 169, 0.7);
+    --color-primary: var(--color-teal-300);
+    --color-primary-hover: var(--color-teal-400);
+    --color-primary-active: var(--color-teal-800);
+    --color-secondary: rgba(119, 124, 124, 0.15);
+    --color-secondary-hover: rgba(119, 124, 124, 0.25);
+    --color-border: rgba(119, 124, 124, 0.3);
+    --color-error: var(--color-red-400);
+    --color-success: var(--color-teal-300);
+    --color-btn-primary-text: var(--color-slate-900);
+    --color-card-border: rgba(119, 124, 124, 0.2);
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: 30px; }
+h2 { font-size: 24px; }
+h3 { font-size: 20px; }
+
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.header {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-card-border);
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.nav {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-link {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 250ms;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--color-primary);
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 250ms;
+  border: none;
+  text-decoration: none;
+}
+
+.btn:focus {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-btn-primary-text);
+}
+
+.btn--primary:hover {
+  background: var(--color-primary-hover);
+}
+
+.btn--secondary {
+  background: var(--color-secondary);
+  color: var(--color-text);
+}
+
+.btn--secondary:hover {
+  background: var(--color-secondary-hover);
+}
+
+.hero {
+  padding: 80px 0;
+  text-align: center;
+  background: linear-gradient(135deg, var(--color-bg-1) 0%, var(--color-bg-3) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '🧪';
+  position: absolute;
+  font-size: 200px;
+  opacity: 0.05;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+}
+
+.hero h1 {
+  font-size: clamp(32px, 6vw, 48px);
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero p {
+  font-size: clamp(16px, 3vw, 20px);
+  color: var(--color-text-secondary);
+  margin-bottom: 32px;
+}
+
+.section {
+  padding: 60px 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: var(--color-surface);
+  border-radius: 12px;
+  border: 1px solid var(--color-card-border);
+  padding: 24px;
+  transition: all 250ms;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--color-primary);
+  opacity: 0;
+  transition: opacity 250ms;
+}
+
+.card:hover,
+.card:focus-within {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  transform: translateY(-4px);
+}
+
+.card:hover::before,
+.card:focus-within::before {
+  opacity: 1;
+}
+
+.card-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.card h3 {
+  margin-bottom: 12px;
+  color: var(--color-primary);
+}
+
+.card p {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.formula {
+  background: var(--color-bg-1);
+  border-left: 4px solid var(--color-primary);
+  padding: 16px;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  margin: 16px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.formula::before {
+  content: '⚛️';
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  font-size: 20px;
+  opacity: 0.3;
+}
+
+.quiz-container {
+  background: var(--color-surface);
+  border-radius: 12px;
+  padding: 32px;
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px solid var(--color-card-border);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  position: relative;
+}
+
+.quiz-container::before {
+  content: '🎓';
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  font-size: 32px;
+  opacity: 0.2;
+}
+
+.question {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option {
+  background: var(--color-secondary);
+  border: 2px solid transparent;
+  padding: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 250ms;
+  text-align: left;
+}
+
+.option:hover,
+.option:focus {
+  background: var(--color-secondary-hover);
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+.option.correct {
+  background: rgba(34, 197, 94, 0.2);
+  border-color: #22c55e;
+}
+
+.option.incorrect {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: #ef4444;
+}
+
+.result {
+  margin-top: 24px;
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.result.success {
+  background: rgba(34, 197, 94, 0.2);
+  color: #16a34a;
+}
+
+.result.error {
+  background: rgba(239, 68, 68, 0.2);
+  color: #dc2626;
+}
+
+.ph-scale {
+  display: flex;
+  height: 60px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 32px 0;
+}
+
+.ph-segment {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--color-card-border);
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: 12px 24px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 250ms;
+}
+
+.tab:hover,
+.tab:focus {
+  color: var(--color-primary);
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
+.tab.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.quiz-tab-content {
+  display: none;
+}
+
+.quiz-tab-content.active {
+  display: block;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Burger menu per a mòbil */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--color-text);
+  padding: 8px;
+}
+
+.mobile-menu-toggle:focus {
+  outline: 2px solid var(--color-primary);
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .hero h1 { font-size: 32px; }
+  
+  .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-surface);
+    flex-direction: column;
+    padding: 16px;
+    border-bottom: 1px solid var(--color-card-border);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .nav.active {
+    display: flex;
+  }
+  
+  .mobile-menu-toggle {
+    display: block;
+  }
+  
+  .cards { 
+    grid-template-columns: 1fr; 
+  }
+  
+  .tabs {
+    flex-direction: column;
+  }
+  
+  .tab {
+    text-align: left;
+    border-bottom: 1px solid var(--color-card-border);
+  }
+}
+
+/* Progress indicator */
+.progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--color-secondary);
+  z-index: 1000;
+}
+
+.progress-bar {
+  height: 100%;
+  background: var(--color-primary);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+/* PROBLEMES INTERACTIUS */
+.problem-container {
+  background: var(--color-surface);
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 24px;
+  border: 1px solid var(--color-card-border);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.problem-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--color-card-border);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.problem-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.problem-difficulty {
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.difficulty-easy {
+  background: rgba(34, 197, 94, 0.2);
+  color: #16a34a;
+}
+
+.difficulty-medium {
+  background: rgba(245, 158, 11, 0.2);
+  color: #d97706;
+}
+
+.difficulty-hard {
+  background: rgba(239, 68, 68, 0.2);
+  color: #dc2626;
+}
+
+.problem-statement {
+  background: var(--color-bg-1);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  line-height: 1.8;
+}
+
+.problem-statement strong {
+  color: var(--color-primary);
+}
+
+.problem-data {
+  background: var(--color-bg-2);
+  padding: 16px;
+  border-radius: 8px;
+  margin: 16px 0;
+}
+
+.problem-data strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--color-text);
+}
+
+.problem-steps {
+  margin-top: 24px;
+}
+
+.step {
+  background: var(--color-secondary);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  border-left: 4px solid var(--color-card-border);
+  transition: all 250ms;
+}
+
+.step.active {
+  border-left-color: var(--color-primary);
+  background: var(--color-bg-3);
+}
+
+.step.completed {
+  border-left-color: #22c55e;
+  background: rgba(34, 197, 94, 0.1);
+}
+
+.step-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.step-number {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.step-status {
+  font-size: 20px;
+}
+
+.step-content {
+  margin-top: 12px;
+}
+
+.input-group {
+  margin: 16px 0;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid var(--color-card-border);
+  border-radius: 8px;
+  font-size: 14px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  transition: border-color 250ms;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.input-group input.correct {
+  border-color: #22c55e;
+  background: rgba(34, 197, 94, 0.05);
+}
+
+.input-group input.incorrect {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.input-hint {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+}
+
+.step-feedback {
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  display: none;
+}
+
+.step-feedback.show {
+  display: block;
+}
+
+.step-feedback.success {
+  background: rgba(34, 197, 94, 0.2);
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.step-feedback.error {
+  background: rgba(239, 68, 68, 0.2);
+  color: #dc2626;
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.hint-box {
+  background: var(--color-bg-5);
+  padding: 16px;
+  border-radius: 8px;
+  margin-top: 16px;
+  border-left: 4px solid var(--color-primary);
+  display: none;
+}
+
+.hint-box.show {
+  display: block;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.solution-box {
+  background: var(--color-bg-3);
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 24px;
+  border: 2px solid #22c55e;
+  display: none;
+}
+
+.solution-box.show {
+  display: block;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.solution-step {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-card-border);
+}
+
+.solution-step:last-child {
+  border-bottom: none;
+}
+
+.solution-step strong {
+  color: var(--color-primary);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.problem-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.problem-card {
+  background: var(--color-surface);
+  border: 2px solid var(--color-card-border);
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 250ms;
+  text-align: center;
+}
+
+.problem-card:hover,
+.problem-card.active {
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  transform: translateY(-2px);
+}
+
+.problem-card-icon {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.problem-card-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--color-text);
+}
+
+.problem-card-desc {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin-bottom: 8px;
+}
+
+.language-selector {
+  display: flex;
+  gap: 4px;
+  background: var(--color-secondary);
+  padding: 4px;
+  border-radius: 8px;
+}
+
+.lang-btn {
+  padding: 6px 12px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 250ms;
+}
+
+.lang-btn:hover {
+  background: var(--color-secondary-hover);
+  color: var(--color-text);
+}
+
+.lang-btn.active {
+  background: var(--color-primary);
+  color: var(--color-btn-primary-text);
+}
+
+.lang-btn:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- Progress bar -->
+<div class="progress-container">
+  <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<header class="header">
+  <div class="container header-content">
+    <div class="logo" data-lang-key="titulo_principal">🧪 Àcids i Bases</div>
+
+    <div class="language-selector">
+      <button class="lang-btn active" data-lang="va" aria-label="Valencià">VA</button>
+      <button class="lang-btn" data-lang="es" aria-label="Castellano">ES</button>
+    </div>
+    <button class="mobile-menu-toggle" id="menuToggle" aria-label="Menú de navegació">
+      ☰
+    </button>
+    <nav class="nav" id="mainNav" role="navigation">
+      <a href="#teoria" class="nav-link" data-lang-key="nav_teoria">Teoria</a>
+      <a href="#exemples" class="nav-link" data-lang-key="nav_exemples">Exemples</a>
+      <a href="#problemes" class="nav-link" data-lang-key="nav_problemes">Problemes</a>
+      <a href="#quiz" class="nav-link" data-lang-key="nav_practica">Practica</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>La Química dels Àcids i Bases</h1>
+    <p style="font-size: 16px; margin-bottom: 8px;">IES Districte Marítim</p>
+    <p style="font-size: 16px; margin-bottom: 8px;">Departament de Física i Química</p>
+    <p style="font-size: 18px; font-weight: 500; margin-bottom: 32px;">Química de 2n Batxillerat</p>
+    <a href="#problemes" class="btn btn--primary">🎯 Aplica el que Saps</a>
+  </div>
+</section>
+
+<section id="teoria" class="section">
+  <div class="container">
+    <h2 class="section-title">Teoria Fonamental</h2>
+    
+    <div class="tabs" role="tablist">
+      <button class="tab active" role="tab" aria-selected="true" aria-controls="arrhenius" data-tab="arrhenius">Arrhenius</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="bronsted" data-tab="bronsted">Brønsted-Lowry</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="ph" data-tab="ph">pH i pOH</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="hidrolisi" data-tab="hidrolisi">Hidròlisi</button>
+    </div>
+
+    <div id="arrhenius" class="tab-content active" role="tabpanel">
+      <div class="cards">
+        <div class="card">
+          <span class="card-icon" role="img" aria-label="Matràs">⚗️</span>
+          <h3>Model d'Arrhenius (1884)</h3>
+          <p>Primera definició moderna basada en ionització en aigua.</p>
+          <div class="formula">
+            <strong>Àcid:</strong> HCl → H⁺ + Cl⁻<br>
+            <strong>Base:</strong> NaOH → Na⁺ + OH⁻
+          </div>
+        </div>
+        <div class="card" style="background: var(--color-bg-2);">
+          <span class="card-icon" role="img" aria-label="Cercle vermell">🔴</span>
+          <h3>Àcids Forts</h3>
+          <p>Ionització completa (α ≈ 100%)</p>
+          <ul style="margin-top: 12px; color: var(--color-text-secondary);">
+            <li>HCl - Àcid clorhídric</li>
+            <li>HNO₃ - Àcid nítric</li>
+            <li>H₂SO₄ - Àcid sulfúric</li>
+          </ul>
+        </div>
+        <div class="card" style="background: var(--color-bg-3);">
+          <span class="card-icon" role="img" aria-label="Cercle blau">🔵</span>
+          <h3>Bases Fortes</h3>
+          <p>Ionització completa (α ≈ 100%)</p>
+          <ul style="margin-top: 12px; color: var(--color-text-secondary);">
+            <li>NaOH - Hidròxid de sodi</li>
+            <li>KOH - Hidròxid de potassi</li>
+            <li>Ca(OH)₂ - Hidròxid de calci</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="bronsted" class="tab-content" role="tabpanel">
+<div class="formula" style="margin-top:16px;">
+<strong>Per què necessitem un altre model?</strong><br>
+El model d’Arrhenius funciona molt bé, però només en aigua.<br><br>
+Substàncies com l’NH₃ no tenen OH⁻ i, tot i això, es comporten com a bases.
+👉 Açò obliga a usar el model de <strong>Brønsted‑Lowry</strong>, molt més general.
+</div>
+
+      <div class="cards">
+        <div class="card">
+          <span class="card-icon" role="img" aria-label="Microscopi">🔬</span>
+          <h3>Model de Brønsted-Lowry (1923)</h3>
+          <p><strong>Àcid:</strong> Donador de protons (H⁺)</p>
+          <p><strong>Base:</strong> Acceptor de protons (H⁺)</p>
+          <div class="formula">
+            HA + B ⇌ A⁻ + HB⁺
+          </div>
+        </div>
+        <div class="card" style="background: var(--color-bg-4);">
+          <span class="card-icon" role="img" aria-label="Àtom">⚛️</span>
+          <h3>Parells Conjugats</h3>
+          <p>Exemples de parells àcid-base:</p>
+          <ul style="margin-top: 12px;">
+            <li>HCl / Cl⁻</li>
+            <li>CH₃COOH / CH₃COO⁻</li>
+            <li>NH₄⁺ / NH₃</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="card-icon" role="img" aria-label="Espurnes">✨</span>
+          <h3>Avantatges</h3>
+          <p>Més general que Arrhenius - funciona en dissolvents no aquosos i explica el comportament de substàncies com NH₃.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="ph" class="tab-content" role="tabpanel">
+<div class="formula" style="margin-top:16px;">
+<strong>Com interpretar realment l’escala de pH:</strong><br>
+Cada unitat de pH implica un canvi de <strong>10 vegades</strong> en l’acidesa.<br>
+pH 3 és 10 vegades més àcid que pH 4, i 100 vegades més que pH 5.
+</div>
+
+      <h3 style="margin-bottom: 16px;">Escala de pH</h3>
+      <div class="formula">
+        pH = -log[H⁺]<br>
+        pOH = -log[OH⁻]<br>
+        <strong>pH + pOH = 14</strong>
+      </div>
+      
+      <div class="ph-scale" role="img" aria-label="Escala de pH del 0 al 14">
+        <div class="ph-segment" style="background-color: #c00000;">0</div>
+        <div class="ph-segment" style="background-color: #e00000;">1</div>
+        <div class="ph-segment" style="background-color: #ff0000;">2</div>
+        <div class="ph-segment" style="background-color: #ff4500;">3</div>
+        <div class="ph-segment" style="background-color: #ff8c00;">4</div>
+        <div class="ph-segment" style="background-color: #ffa500;">5</div>
+        <div class="ph-segment" style="background-color: #ffd700;">6</div>
+        <div class="ph-segment" style="background-color: #00ff00;">7</div>
+        <div class="ph-segment" style="background-color: #00ffff;">8</div>
+        <div class="ph-segment" style="background-color: #0099ff;">9</div>
+        <div class="ph-segment" style="background-color: #0066ff;">10</div>
+        <div class="ph-segment" style="background-color: #0033ff;">11</div>
+        <div class="ph-segment" style="background-color: #0000ff;">12</div>
+        <div class="ph-segment" style="background-color: #000099;">13</div>
+        <div class="ph-segment" style="background-color: #000066;">14</div>
+      </div>
+      
+      <p style="text-align: center; color: var(--color-text-secondary); margin-top: 16px;">
+        <span style="color: #ff4500;">← ÀCID</span> &nbsp;&nbsp;&nbsp; 
+        <span style="color: #00ff00;">NEUTRE (7)</span> &nbsp;&nbsp;&nbsp;
+        <span style="color: #0066ff;">BASE →</span>
+      </p>
+    </div>
+
+    <div id="hidrolisi" class="tab-content" role="tabpanel">
+      <div class="cards">
+        <div class="card">
+          <span class="card-icon" role="img" aria-label="Gota d'aigua">💧</span>
+          <h3>Àcid Fort + Base Forta</h3>
+          <p><strong>pH = 7 (NEUTRE)</strong></p>
+          <p>Exemple: NaCl, KNO₃</p>
+        </div>
+        <div class="card" style="background: var(--color-bg-3);">
+          <span class="card-icon" role="img" aria-label="Cercle verd">🟢</span>
+          <h3>Àcid Dèbil + Base Forta</h3>
+          <p><strong>pH &gt; 7 (BÀSIC)</strong></p>
+          <p>Exemple: CH₃COONa, NaCN</p>
+          <div class="formula" style="font-size: 12px;">
+            A⁻ + H₂O → HA + OH⁻
+          </div>
+        </div>
+        <div class="card" style="background: var(--color-bg-4);">
+          <span class="card-icon" role="img" aria-label="Cercle taronja">🟠</span>
+          <h3>Àcid Fort + Base Dèbil</h3>
+          <p><strong>pH &lt; 7 (ÀCID)</strong></p>
+          <p>Exemple: NH₄Cl, NH₄NO₃</p>
+          <div class="formula" style="font-size: 12px;">
+            NH₄⁺ + H₂O → NH₃ + H₃O⁺
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="exemples" class="section" style="background: var(--color-bg-1);">
+  <div class="container">
+    <h2 class="section-title">Exemples de pH</h2>
+    <div class="cards">
+      <div class="card">
+        <span class="card-icon" role="img" aria-label="Llimona">🍋</span>
+        <h3>Substàncies Àcides</h3>
+        <ul>
+          <li>Àcid de bateria: pH = 0</li>
+          <li>Suc gàstric: pH = 1,7</li>
+          <li>Poma: pH = 3,7</li>
+          <li>Cafè: pH = 5</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="card-icon" role="img" aria-label="Gota d'aigua">💧</span>
+        <h3>Substàncies Neutres</h3>
+        <ul>
+          <li>Aigua pura: pH = 7</li>
+          <li>Llet: pH = 6,5</li>
+          <li>Sang: pH = 7,4</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="card-icon" role="img" aria-label="Sabó">🧼</span>
+        <h3>Substàncies Bàsiques</h3>
+        <ul>
+          <li>Aigua de mar: pH = 8,1</li>
+          <li>Amoníac: pH = 11</li>
+          <li>Lleixiu: pH = 13,5</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- SECCIÓ DE PROBLEMES INTERACTIUS -->
+<section id="problemes" class="section">
+  <div class="container">
+    <h2 class="section-title">🎯 Problemes Guiats Pas a Pas</h2>
+    <p style="text-align: center; color: var(--color-text-secondary); margin-bottom: 32px;">
+      Resol problemes reals amb ajuda interactiva i feedback immediat
+    </p>
+    
+    <!-- Selector de problemes -->
+    <div class="problem-selector">
+      <div class="problem-card active" data-problem="problem1">
+        <div class="problem-card-icon">🧪</div>
+        <div class="problem-card-title">Exercici 4</div>
+        <div class="problem-card-desc">Àcid dèbil i grau d'ionització</div>
+        <div class="problem-difficulty difficulty-medium">Mitjà</div>
+      </div>
+      
+      <div class="problem-card" data-problem="problem2">
+        <div class="problem-card-icon">🔬</div>
+        <div class="problem-card-title">Exercici 1</div>
+        <div class="problem-card-desc">Amoníac - Base dèbil</div>
+        <div class="problem-difficulty difficulty-medium">Mitjà</div>
+      </div>
+      
+      <div class="problem-card" data-problem="problem3">
+        <div class="problem-card-icon">⚗️</div>
+        <div class="problem-card-title">Problema 3</div>
+        <div class="problem-card-desc">Àcid benzoic - Neutralització</div>
+        <div class="problem-difficulty difficulty-hard">Difícil</div>
+      </div>
+      
+      <div class="problem-card" data-problem="problem4">
+        <div class="problem-card-icon">💧</div>
+        <div class="problem-card-title">Problema 3 bis</div>
+        <div class="problem-card-desc">Comparació d'àcids</div>
+        <div class="problem-difficulty difficulty-easy">Fàcil</div>
+      </div>
+    </div>
+    
+    <!-- PROBLEMA 1 -->
+    <div id="problem1" class="problem-container">
+      <div class="problem-header">
+        <div class="problem-title">Exercici 4: Àcid Dèbil Monopròtic</div>
+        <span class="problem-difficulty difficulty-medium">Mitjà</span>
+      </div>
+      
+      <div class="problem-statement">
+        <p>Es disposa d'una dissolució d'un àcid dèbil monopròtic, HA, de concentració <strong>0,5 mol·L⁻¹</strong>, el grau de ionització del qual és del <strong>12%</strong>.</p>
+        
+        <div class="problem-data">
+          <strong>📊 Dades:</strong>
+          <ul style="margin-left: 20px;">
+            <li>Concentració inicial: C = 0,5 M</li>
+            <li>Grau d'ionització: α = 12% = 0,12</li>
+          </ul>
+        </div>
+        
+        <p><strong>a)</strong> Calcula el pH de la dissolució i el valor de la constant d'acidesa</p>
+        <p><strong>b1)</strong> Calcula el pH de la dissolució resultant en afegir 80 mL d'aigua a 20 mL de la dissolució anterior</p>
+        <p><strong>b2)</strong> Justifica si les següents afirmacions són verdaderes o falses</p>
+      </div>
+      
+      <div class="problem-steps">
+        <div class="step active" id="p1-step1">
+          <div class="step-header">
+            <span class="step-number">Pas 1: Càlcul de [H⁺]</span>
+            <span class="step-status">⏳</span>
+          </div>
+          <div class="step-content">
+            <p>Calcula la concentració d'ions H⁺ utilitzant el grau d'ionització.</p>
+            <div class="formula">[H⁺] = C × α</div>
+            
+            <div class="input-group">
+              <label>Calcula [H⁺] (en mol/L):</label>
+              <input type="number" step="0.001" id="p1-h-concentration" placeholder="0.060">
+              <div class="input-hint">Pista: Multiplica 0,5 × 0,12</div>
+            </div>
+            
+            <div class="button-group">
+              <button class="btn btn--primary btn--small" onclick="checkP1Step1()">Comprovar</button>
+              <button class="btn btn--secondary btn--small" onclick="showHint(&quot;p1-step1&quot;)">💡 Pista</button>
+            </div>
+            
+            <div class="hint-box" id="p1-step1-hint">
+              <strong>💡 Pista:</strong>
+              <p>[H⁺] = C₀ × α = 0,5 × 0,12 = 0,06 mol/L</p>
+            </div>
+            
+            <div class="step-feedback" id="p1-step1-feedback"></div>
+          </div>
+        </div>
+        
+        <div class="step" id="p1-step2">
+          <div class="step-header">
+            <span class="step-number">Pas 2: Càlcul del pH</span>
+            <span class="step-status">🔒</span>
+          </div>
+          <div class="step-content">
+            <p>Calcula el pH utilitzant: pH = -log[H⁺]</p>
+            
+            <div class="input-group">
+              <label>Calcula el pH:</label>
+              <input type="number" step="0.01" id="p1-ph" placeholder="1.22">
+              <div class="input-hint">pH = -log(0,06)</div>
+            </div>
+            
+            <div class="button-group">
+              <button class="btn btn--primary btn--small" onclick="checkP1Step2()">Comprovar</button>
+              <button class="btn btn--secondary btn--small" onclick="showHint(&quot;p1-step2&quot;)">💡 Pista</button>
+            </div>
+            
+            <div class="hint-box" id="p1-step2-hint">
+              <strong>💡 Pista:</strong>
+              <p>pH = -log(0,06) ≈ 1,22</p>
+            </div>
+            
+            <div class="step-feedback" id="p1-step2-feedback"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div style="text-align: center; margin-top: 32px;">
+        <button class="btn btn--secondary" onclick="toggleSolution(&quot;problem1&quot;)">📖 Veure Solució Completa</button>
+      </div>
+      
+      <div class="solution-box" id="problem1-solution">
+        <h3 style="margin-bottom: 20px; color: var(--color-primary);">📚 Solució Completa</h3>
+        
+        <div class="solution-step">
+          <strong>Apartat a) Càlcul de pH i Ka:</strong>
+          <p>1. [H⁺] = C × α = 0,5 × 0,12 = 0,06 mol/L</p>
+          <p>2. pH = -log(0,06) = 1,22</p>
+          <p>3. [HA]ₑq = C(1-α) = 0,5 × 0,88 = 0,44 mol/L</p>
+          <p>4. Ka = [H⁺]²/[HA] = (0,06)²/0,44 = 8,18 × 10⁻³</p>
+        </div>
+        
+        <div class="solution-step">
+          <strong>Apartat b1) Dilució:</strong>
+          <p>C₂ = C₁V₁/V₂ = 0,5 × 20/100 = 0,10 M</p>
+          <p>[H⁺] ≈ √(Ka × C₂) = √(8,18×10⁻³ × 0,10) ≈ 0,0286 M</p>
+          <p>pH = -log(0,0286) ≈ 1,54</p>
+        </div>
+        
+        <div class="solution-step">
+          <strong>Apartat b2) Qüestions teòriques:</strong>
+          <p><strong>i) VERITABLE:</strong> Els àcids forts tenen α ≈ 100% sempre</p>
+          <p><strong>ii) VERITABLE:</strong> La sal NaA pateix hidròlisi bàsica, pH > 7</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Altres problemes (simplificats per brevetat) -->
+    <div id="problem2" class="problem-container" style="display: none;">
+      <div class="problem-header">
+        <div class="problem-title">Exercici 1: Amoníac - Base Dèbil</div>
+        <span class="problem-difficulty difficulty-medium">Mitjà</span>
+      </div>
+      <div class="problem-statement">
+        <p>L'amoníac (Kb = 1,8 × 10⁻⁵) és una base dèbil. Es prepara 1 L de dissolució amb 0,15 mol de NH₃.</p>
+        <p><strong>Calcula:</strong> [OH⁻], pH i percentatge de reacció</p>
+      </div>
+      <div style="padding: 20px; text-align: center;">
+        <p><div class="problem-steps">
+  <div class="step active" id="p2-step1">
+    <div class="step-header">
+      <span class="step-number">Pas 1: Concentració inicial</span>
+      <span class="step-status">⏳</span>
+    </div>
+    <div class="step-content">
+      <div class="formula">C = n / V</div>
+      <div class="input-group">
+        <label>Concentració inicial (M):</label>
+        <input type="number" step="0.01" id="p2-c-initial" placeholder="0.15">
+      </div>
+      <button class="btn btn--primary" onclick="checkP2Step1()">Comprovar</button>
+      <div class="step-feedback" id="p2-step1-feedback"></div>
+    </div>
+  </div>
+
+  <div class="step" id="p2-step2">
+    <div class="step-header">
+      <span class="step-number">Pas 2: [OH⁻]</span>
+      <span class="step-status">🔒</span>
+    </div>
+    <div class="step-content">
+      <div class="formula">[OH⁻] ≈ √(Kb × C)</div>
+      <input type="number" step="0.00001" id="p2-oh" placeholder="0.00164">
+      <button class="btn btn--primary" onclick="checkP2Step2()">Comprovar</button>
+      <div class="step-feedback" id="p2-step2-feedback"></div>
+    </div>
+  </div>
+
+  <div class="step" id="p2-step3">
+    <div class="step-header">
+      <span class="step-number">Pas 3: pH</span>
+      <span class="step-status">🔒</span>
+    </div>
+    <div class="step-content">
+      <input type="number" step="0.01" id="p2-ph" placeholder="11.21">
+      <button class="btn btn--primary" onclick="checkP2Step3()">Comprovar</button>
+      <div class="step-feedback" id="p2-step3-feedback"></div>
+    </div>
+  </div>
+
+  <div class="step" id="p2-step4">
+    <div class="step-header">
+      <span class="step-number">Pas 4: Percentatge</span>
+      <span class="step-status">🔒</span>
+    </div>
+    <div class="step-content">
+      <div class="formula">% = ([OH⁻]/C) × 100</div>
+      <input type="number" step="0.01" id="p2-percentage" placeholder="1.09">
+      <button class="btn btn--primary" onclick="checkP2Step4()">Comprovar</button>
+      <div class="step-feedback" id="p2-step4-feedback"></div>
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+    <div id="problem3" class="problem-container" style="display: none;">
+      <div class="problem-header">
+        <div class="problem-title">Problema 3: Àcid Benzoic</div>
+        <span class="problem-difficulty difficulty-hard">Difícil</span>
+      </div>
+      <div class="problem-statement">
+        <p>Àcid benzoic (Ka = 6,25×10⁻⁵): 490 mg en 200 mL d'aigua</p>
+        <p><strong>Calcula:</strong> pH, volum de NaOH 0,05M per neutralitzar, pH en el punt d'equivalència</p>
+      </div>
+      <div style="padding: 20px; text-align: center;">
+        <p><div class="problem-steps">
+  <div class="step active" id="p3-step1">
+    <div class="step-header">
+      <span class="step-number">Pas 1: Mols i concentració</span>
+      <span class="step-status">⏳</span>
+    </div>
+    <div class="step-content">
+      <input type="number" step="0.00001" id="p3-mols" placeholder="0.00402">
+      <input type="number" step="0.001" id="p3-conc" placeholder="0.020">
+      <button class="btn btn--primary" onclick="checkP3Step1()">Comprovar</button>
+      <div class="step-feedback" id="p3-step1-feedback"></div>
+    </div>
+  </div>
+
+  <div class="step" id="p3-step2">
+    <div class="step-header">
+      <span class="step-number">Pas 2: pH inicial</span>
+      <span class="step-status">🔒</span>
+    </div>
+    <div class="step-content">
+      <input type="number" step="0.01" id="p3-ph" placeholder="2.95">
+      <button class="btn btn--primary" onclick="checkP3Step2()">Comprovar</button>
+      <div class="step-feedback" id="p3-step2-feedback"></div>
+    </div>
+  </div>
+
+  <div class="step" id="p3-step3">
+    <div class="step-header">
+      <span class="step-number">Pas 3: Volum NaOH</span>
+      <span class="step-status">🔒</span>
+    </div>
+    <div class="step-content">
+      <input type="number" step="0.1" id="p3-vol" placeholder="80.4">
+      <button class="btn btn--primary" onclick="checkP3Step3()">Comprovar</button>
+      <div class="step-feedback" id="p3-step3-feedback"></div>
+    </div>
+  </div>
+</div>
+
+      </div>
+    </div>
+    
+    <div id="problem4" class="problem-container" style="display: none;">
+      <div class="problem-header">
+        <div class="problem-title">Problema 3 bis: Comparació d'Àcids</div>
+        <span class="problem-difficulty difficulty-easy">Fàcil</span>
+      </div>
+      <div class="problem-statement">
+        <p>Identifica quin àcid té pH = 2,42 en dissolució 0,1 M</p>
+        <p>Àcids disponibles: cloroetanoic, làctic, cloropropanoic, cianoacètic</p>
+      </div>
+      <div style="padding: 20px; text-align: center;">
+        <p><div class="problem-steps">
+  <div class="step active" id="p4-step1">
+    <div class="step-header">
+      <span class="step-number">Pas 1: [H⁺] i Ka</span>
+      <span class="step-status">⏳</span>
+    </div>
+    <div class="step-content">
+      <input type="number" step="0.0001" id="p4-h" placeholder="0.00380">
+      <input type="number" step="0.000001" id="p4-ka" placeholder="0.000148">
+      <button class="btn btn--primary" onclick="checkP4Step1()">Comprovar</button>
+      <div class="step-feedback" id="p4-step1-feedback"></div>
+    </div>
+  </div>
+
+  <div class="step" id="p4-step2">
+    <div class="step-header">
+      <span class="step-number">Pas 2: Concentració</span>
+      <span class="step-status">🔒</span>
+    </div>
+    <div class="step-content">
+      <input type="number" step="0.01" id="p4-conc" placeholder="0.10">
+      <button class="btn btn--primary" onclick="checkP4Step2()">Comprovar</button>
+      <div class="step-feedback" id="p4-step2-feedback"></div>
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section id="quiz" class="section">
+  <div class="container">
+    <h2 class="section-title">🧠 Practica els Teus Coneixements</h2>
+    
+    <div class="tabs" role="tablist">
+      <button class="tab quiz-tab active" role="tab" aria-selected="true" aria-controls="arrhenius-quiz" data-quiz-tab="arrhenius-quiz">Arrhenius</button>
+      <button class="tab quiz-tab" role="tab" aria-selected="false" aria-controls="bronsted-quiz" data-quiz-tab="bronsted-quiz">Brønsted-Lowry</button>
+      <button class="tab quiz-tab" role="tab" aria-selected="false" aria-controls="ph-quiz" data-quiz-tab="ph-quiz">pH i pOH</button>
+      <button class="tab quiz-tab" role="tab" aria-selected="false" aria-controls="hidrolisi-quiz" data-quiz-tab="hidrolisi-quiz">Hidròlisi</button>
+    </div>
+
+    <div id="arrhenius-quiz" class="quiz-tab-content active" role="tabpanel">
+      <div class="quiz-container">
+        <div id="question-arrhenius" class="question" role="heading" aria-level="3"></div>
+        <div id="options-arrhenius" class="options" role="radiogroup" aria-label="Opcions de resposta"></div>
+        <div id="result-arrhenius" class="result" style="display: none;" role="status" aria-live="polite"></div>
+        <button id="next-btn-arrhenius" class="btn btn--primary" style="margin-top: 24px; display: none;">Següent Pregunta</button>
+      </div>
+    </div>
+
+    <div id="bronsted-quiz" class="quiz-tab-content" role="tabpanel">
+      <div class="quiz-container">
+        <div id="question-bronsted" class="question" role="heading" aria-level="3"></div>
+        <div id="options-bronsted" class="options" role="radiogroup" aria-label="Opcions de resposta"></div>
+        <div id="result-bronsted" class="result" style="display: none;" role="status" aria-live="polite"></div>
+        <button id="next-btn-bronsted" class="btn btn--primary" style="margin-top: 24px; display: none;">Següent Pregunta</button>
+      </div>
+    </div>
+
+    <div id="ph-quiz" class="quiz-tab-content" role="tabpanel">
+      <div class="quiz-container">
+        <div id="question-ph" class="question" role="heading" aria-level="3"></div>
+        <div id="options-ph" class="options" role="radiogroup" aria-label="Opcions de resposta"></div>
+        <div id="result-ph" class="result" style="display: none;" role="status" aria-live="polite"></div>
+        <button id="next-btn-ph" class="btn btn--primary" style="margin-top: 24px; display: none;">Següent Pregunta</button>
+      </div>
+    </div>
+
+    <div id="hidrolisi-quiz" class="quiz-tab-content" role="tabpanel">
+      <div class="quiz-container">
+        <div id="question-hidrolisi" class="question" role="heading" aria-level="3"></div>
+        <div id="options-hidrolisi" class="options" role="radiogroup" aria-label="Opcions de resposta"></div>
+        <div id="result-hidrolisi" class="result" style="display: none;" role="status" aria-live="polite"></div>
+        <button id="next-btn-hidrolisi" class="btn btn--primary" style="margin-top: 24px; display: none;">Següent Pregunta</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section" style="background: var(--color-bg-2);">
+  <div class="container">
+    <h2 class="section-title">📌 El que SEMPRE cau en l’examen</h2>
+    <div class="cards">
+      <div class="card"><h3>Càlcul de pH</h3><p>Àcids i bases dèbils amb Ka o Kb.</p></div>
+      <div class="card"><h3>Hidròlisi de sals</h3><p>Determinar si el pH és àcid, neutre o bàsic.</p></div>
+      <div class="card"><h3>Comparació d’àcids</h3><p>Ús del valor de Ka per saber quin és més fort.</p></div>
+      <div class="card"><h3>Dilucions</h3><p>Com canvia el pH quan afegim aigua.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer style="background: var(--color-surface); padding: 40px 0; text-align: center; border-top: 1px solid var(--color-card-border); margin-top: 60px;">
+  <div class="container">
+    <p style="color: var(--color-text-secondary);">IES Districte Marítim - Departament de Física i Química</p>
+    <p style="color: var(--color-text-secondary); margin-top: 8px;">2n Batxillerat - Química</p>
+  </div>
+</footer>
+
+<script>
+
+// ========== SISTEMA D'IDIOMES ==========
+const traduccions = {
+  va: {
+    titulo_principal: "🧪 Àcids i Bases",
+    nav_teoria: "Teoria",
+    nav_exemples: "Exemples",
+    nav_problemes: "Problemes",
+    nav_practica: "Practica",
+  },
+  es: {
+    titulo_principal: "🧪 Ácidos y Bases",
+    nav_teoria: "Teoría",
+    nav_exemples: "Ejemplos",
+    nav_problemes: "Problemas",
+    nav_practica: "Practica",
+  }
+};
+
+let idiomaActual = localStorage.getItem("idioma") || "va";
+
+function canviarIdioma(lang) {
+  idiomaActual = lang;
+  localStorage.setItem("idioma", lang);
+  
+  document.querySelectorAll(".lang-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+  });
+  
+  document.querySelectorAll("[data-lang-key]").forEach(element => {
+    const key = element.getAttribute("data-lang-key");
+    if (traduccions[lang] && traduccions[lang][key]) {
+      element.textContent = traduccions[lang][key];
+    }
+  });
+}
+
+
+// ========== UTILITATS ==========
+const LocalStorage = {
+  save: function(key, data) {
+    try {
+      localStorage.setItem(key, JSON.stringify(data));
+    } catch (e) {
+      console.warn('No es pot guardar a localStorage:', e);
+    }
+  },
+  load: function(key) {
+    try {
+      const data = localStorage.getItem(key);
+      return data ? JSON.parse(data) : null;
+    } catch (e) {
+      console.warn('No es pot carregar de localStorage:', e);
+      return null;
+    }
+  },
+  clear: function(key) {
+    try {
+      localStorage.removeItem(key);
+    } catch (e) {
+      console.warn('No es pot esborrar de localStorage:', e);
+    }
+  }
+};
+
+// ========== NAVEGACIÓ ==========
+// Menú mòbil
+const menuToggle = document.getElementById('menuToggle');
+const mainNav = document.getElementById('mainNav');
+
+if (menuToggle && mainNav) {
+  menuToggle.addEventListener('click', function() {
+    mainNav.classList.toggle('active');
+    const isExpanded = mainNav.classList.contains('active');
+    menuToggle.setAttribute('aria-expanded', isExpanded);
+  });
+
+  // Tancar menú en clicar un enllaç
+  const navLinks = mainNav.querySelectorAll('.nav-link');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mainNav.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
+// Progress bar on scroll
+window.addEventListener('scroll', function() {
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height) * 100;
+  const progressBar = document.getElementById('progressBar');
+  if (progressBar) {
+    progressBar.style.width = scrolled + '%';
+  }
+});
+
+// ========== PESTANYES DE TEORIA ==========
+function showTab(event, tabName) {
+  const tabs = document.querySelectorAll('.tab:not(.quiz-tab)');
+  const contents = document.querySelectorAll('.tab-content');
+  
+  tabs.forEach(tab => {
+    tab.classList.remove('active');
+    tab.setAttribute('aria-selected', 'false');
+  });
+  contents.forEach(content => content.classList.remove('active'));
+  
+  event.currentTarget.classList.add('active');
+  event.currentTarget.setAttribute('aria-selected', 'true');
+  const targetContent = document.getElementById(tabName);
+  if (targetContent) {
+    targetContent.classList.add('active');
+  }
+}
+
+// Event listeners per a pestanyes de teoria
+document.querySelectorAll('.tab:not(.quiz-tab)').forEach(tab => {
+  tab.addEventListener('click', function(event) {
+    const tabName = this.getAttribute('data-tab');
+    showTab(event, tabName);
+  });
+});
+
+// ========== PESTANYES DE QUIZ ==========
+function showQuizTab(event, tabName) {
+  const tabs = document.querySelectorAll('.quiz-tab');
+  const contents = document.querySelectorAll('.quiz-tab-content');
+  
+  tabs.forEach(tab => {
+    tab.classList.remove('active');
+    tab.setAttribute('aria-selected', 'false');
+  });
+  contents.forEach(content => content.classList.remove('active'));
+  
+  event.currentTarget.classList.add('active');
+  event.currentTarget.setAttribute('aria-selected', 'true');
+  const targetContent = document.getElementById(tabName);
+  if (targetContent) {
+    targetContent.classList.add('active');
+  }
+}
+
+// Event listeners per a pestanyes de quiz
+document.querySelectorAll('.quiz-tab').forEach(tab => {
+  tab.addEventListener('click', function(event) {
+    const tabName = this.getAttribute('data-quiz-tab');
+    showQuizTab(event, tabName);
+  });
+});
+
+// ========== DADES DE QUIZZES ==========
+const quizDataArrhenius = [
+  {
+    question: "Què és un àcid segons Arrhenius?",
+    options: [
+      "Substància que dona H⁺ en aigua",
+      "Substància que dona OH⁻ en aigua",
+      "Substància que accepta H⁺",
+      "Substància que accepta OH⁻"
+    ],
+    correct: 0
+  },
+  {
+    question: "Què és una base segons Arrhenius?",
+    options: [
+      "Substància que dona H⁺",
+      "Substància que dona OH⁻ en aigua",
+      "Substància que accepta OH⁻",
+      "Substància neutra"
+    ],
+    correct: 1
+  },
+  {
+    question: "Quin és un àcid fort segons Arrhenius?",
+    options: ["CH₃COOH", "HCl", "H₂CO₃", "HCN"],
+    correct: 1
+  },
+  {
+    question: "El model d'Arrhenius es limita a:",
+    options: [
+      "Qualsevol dissolvent",
+      "Només dissolvents aquosos",
+      "Dissolvents orgànics",
+      "No té limitacions"
+    ],
+    correct: 1
+  },
+  {
+    question: "Quina base és forta segons Arrhenius?",
+    options: ["NH₃", "NaOH", "Al(OH)₃", "Mg(OH)₂"],
+    correct: 1
+  }
+];
+
+const quizDataBronsted = [
+  {
+    question: "Una base segons Brønsted-Lowry:",
+    options: ["Dona H⁺", "Accepta H⁺", "Dona OH⁻", "Accepta OH⁻"],
+    correct: 1
+  },
+  {
+    question: "Quina és la base conjugada de HCl?",
+    options: ["H₂O", "Cl⁻", "H₃O⁺", "OH⁻"],
+    correct: 1
+  },
+  {
+    question: "En la reacció: NH₃ + H₂O ⇌ NH₄⁺ + OH⁻, quin és l'àcid?",
+    options: ["NH₃", "H₂O", "NH₄⁺", "OH⁻"],
+    correct: 1
+  },
+  {
+    question: "El parell conjugat de CH₃COOH és:",
+    options: ["CH₃COO⁻", "H₃O⁺", "CH₃COOH₂⁺", "H₂O"],
+    correct: 0
+  },
+  {
+    question: "Segons Brønsted-Lowry, H₂O pot actuar com:",
+    options: ["Només àcid", "Només base", "Àcid i base (amfòter)", "Cap dels dos"],
+    correct: 2
+  }
+];
+
+const quizDataPH = [
+  {
+    question: "Quin és el pH de l'aigua pura?",
+    options: ["0", "7", "14", "3.5"],
+    correct: 1
+  },
+  {
+    question: "pH + pOH = ?",
+    options: ["7", "14", "0", "1"],
+    correct: 1
+  },
+  {
+    question: "Una dissolució amb pH = 3 és:",
+    options: ["Neutra", "Bàsica", "Àcida", "Tampó"],
+    correct: 2
+  },
+  {
+    question: "La sang humana té un pH aproximat de:",
+    options: ["5.5", "7.4", "9.0", "6.0"],
+    correct: 1
+  },
+  {
+    question: "Kw a 25°C val:",
+    options: ["10⁻⁷", "10⁻¹⁴", "10⁻¹", "14"],
+    correct: 1
+  },
+  {
+    question: "Si [H⁺] = 10⁻⁵ M, quin és el pH?",
+    options: ["5", "9", "10⁻⁵", "10⁻⁹"],
+    correct: 0
+  },
+  {
+    question: "Una dissolució amb pOH = 3 té un pH de:",
+    options: ["3", "11", "7", "17"],
+    correct: 1
+  }
+  ,
+  {
+    question: "Si [H⁺] = 3,2×10⁻⁴ M, quin és el pH?",
+    options: ["3,49", "4,49", "2,49", "5,49"],
+    correct: 0
+  },
+  {
+    question: "Una dissolució té pOH = 5. Quin és el pH?",
+    options: ["5", "9", "7", "14"],
+    correct: 1
+  }
+
+];
+
+const quizDataHidrolisi = [
+  {
+    question: "NH₄Cl en aigua dona pH:",
+    options: ["= 7", "> 7", "< 7", "No canvia"],
+    correct: 2
+  },
+  {
+    question: "Una sal de àcid dèbil + base forta té pH:",
+    options: ["= 7", "> 7", "< 7", "Depèn de la concentració"],
+    correct: 1
+  },
+  {
+    question: "NaCl en aigua produeix:",
+    options: ["pH àcid", "pH bàsic", "pH neutre", "Precipita"],
+    correct: 2
+  },
+  {
+    question: "Quina sal pateix hidròlisi bàsica?",
+    options: ["NaCl", "NH₄Cl", "CH₃COONa", "KNO₃"],
+    correct: 2
+  },
+  {
+    question: "La hidròlisi de NH₄⁺ produeix:",
+    options: ["OH⁻", "H₃O⁺", "H₂", "No reacciona"],
+    correct: 1
+  }
+];
+
+// ========== ESTAT DELS QUIZZES ==========
+const quizStates = {
+  arrhenius: { currentQuestion: 0, score: 0, data: quizDataArrhenius },
+  bronsted: { currentQuestion: 0, score: 0, data: quizDataBronsted },
+  ph: { currentQuestion: 0, score: 0, data: quizDataPH },
+  hidrolisi: { currentQuestion: 0, score: 0, data: quizDataHidrolisi }
+};
+
+// ========== FUNCIONS DEL QUIZ ==========
+function loadQuestion(topic) {
+  const state = quizStates[topic];
+  
+  // Carregar progrés des de localStorage
+  const savedProgress = LocalStorage.load(`quiz_${topic}`);
+  if (savedProgress) {
+    state.currentQuestion = savedProgress.currentQuestion || 0;
+    state.score = savedProgress.score || 0;
+  }
+  
+  const q = state.data[state.currentQuestion];
+  const total = state.data.length;
+  
+  document.getElementById(`question-${topic}`).textContent = `Pregunta ${state.currentQuestion + 1}/${total}: ${q.question}`;
+  
+  const optionsDiv = document.getElementById(`options-${topic}`);
+  optionsDiv.innerHTML = '';
+  
+  q.options.forEach((option, index) => {
+    const optionDiv = document.createElement('div');
+    optionDiv.className = 'option';
+    optionDiv.textContent = option;
+    optionDiv.tabIndex = 0;
+    optionDiv.setAttribute('role', 'radio');
+    optionDiv.setAttribute('aria-checked', 'false');
+    
+    // Event listeners per clic i teclat
+    optionDiv.addEventListener('click', () => checkAnswer(index, topic));
+    optionDiv.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        checkAnswer(index, topic);
+      }
+    });
+    
+    optionsDiv.appendChild(optionDiv);
+  });
+  
+  document.getElementById(`result-${topic}`).style.display = 'none';
+  document.getElementById(`next-btn-${topic}`).style.display = 'none';
+}
+
+function checkAnswer(selected, topic) {
+  const state = quizStates[topic];
+  const q = state.data[state.currentQuestion];
+  const options = document.querySelectorAll(`#options-${topic} .option`);
+  const resultDiv = document.getElementById(`result-${topic}`);
+  
+  // Deshabilitar totes les opcions
+  options.forEach(opt => {
+    opt.style.pointerEvents = 'none';
+    opt.tabIndex = -1;
+  });
+  
+  if (selected === q.correct) {
+    options[selected].classList.add('correct');
+    options[selected].setAttribute('aria-checked', 'true');
+    resultDiv.textContent = '✓ Correcte!';
+    resultDiv.className = 'result success';
+    state.score++;
+  } else {
+    options[selected].classList.add('incorrect');
+    options[selected].setAttribute('aria-checked', 'false');
+    options[q.correct].classList.add('correct');
+    options[q.correct].setAttribute('aria-checked', 'true');
+    resultDiv.textContent = "✗ Incorrecte. La resposta correcta s'ha marcat en verd.";
+    resultDiv.className = 'result error';
+  }
+  
+  resultDiv.style.display = 'block';
+  
+  const nextBtn = document.getElementById(`next-btn-${topic}`);
+  nextBtn.style.display = 'inline-flex';
+  nextBtn.focus(); // Focus automàtic al botó següent
+}
+
+function nextQuestion(topic) {
+  const state = quizStates[topic];
+  state.currentQuestion++;
+  
+  // Guardar progrés a localStorage
+  LocalStorage.save(`quiz_${topic}`, {
+    currentQuestion: state.currentQuestion,
+    score: state.score
+  });
+  
+  if (state.currentQuestion < state.data.length) {
+    loadQuestion(topic);
+  } else {
+    showFinalScore(topic);
+  }
+}
+
+function showFinalScore(topic) {
+  const state = quizStates[topic];
+  const percentage = (state.score / state.data.length) * 100;
+  
+  document.getElementById(`question-${topic}`).textContent = 'Quiz Completat!';
+  document.getElementById(`options-${topic}`).innerHTML = '';
+  
+  const resultDiv = document.getElementById(`result-${topic}`);
+  resultDiv.innerHTML = `
+    <h3>Puntuació Final: ${state.score}/${state.data.length}</h3>
+    <p style="font-size: 24px; margin-top: 16px;">${percentage.toFixed(0)}%</p>
+    <p style="margin-top: 16px;">${percentage >= 70 ? "🎉 Excel·lent!" : percentage >= 50 ? "👍 Bé fet!" : "📚 Segueix practicant!"}</p>
+  `;
+  resultDiv.className = percentage >= 70 ? 'result success' : 'result';
+  resultDiv.style.display = 'block';
+  
+  const nextBtn = document.getElementById(`next-btn-${topic}`);
+  nextBtn.textContent = 'Reiniciar Quiz';
+  nextBtn.onclick = () => resetQuiz(topic);
+  
+  // Esborrar progrés de localStorage
+  LocalStorage.clear(`quiz_${topic}`);
+}
+
+function resetQuiz(topic) {
+  const state = quizStates[topic];
+  state.currentQuestion = 0;
+  state.score = 0;
+  
+  const nextBtn = document.getElementById(`next-btn-${topic}`);
+  nextBtn.textContent = 'Següent Pregunta';
+  nextBtn.onclick = () => nextQuestion(topic);
+  
+  LocalStorage.clear(`quiz_${topic}`);
+  loadQuestion(topic);
+}
+
+// Event listeners per als botons següent pregunta
+document.getElementById('next-btn-arrhenius').addEventListener('click', () => nextQuestion('arrhenius'));
+document.getElementById('next-btn-bronsted').addEventListener('click', () => nextQuestion('bronsted'));
+document.getElementById('next-btn-ph').addEventListener('click', () => nextQuestion('ph'));
+document.getElementById('next-btn-hidrolisi').addEventListener('click', () => nextQuestion('hidrolisi'));
+
+// ========== INICIALITZACIÓ ==========
+document.addEventListener('DOMContentLoaded', function() {
+  // Inicialitzar sistema d'idiomes
+  document.querySelectorAll(".lang-btn").forEach(btn => {
+    btn.addEventListener("click", function() {
+      canviarIdioma(this.getAttribute("data-lang"));
+    });
+  });
+  canviarIdioma(idiomaActual);
+  
+
+  // Inicialitzar tots els quizzes
+  loadQuestion('arrhenius');
+  loadQuestion('bronsted');
+  loadQuestion('ph');
+  loadQuestion('hidrolisi');
+});
+
+
+// ========== FUNCIONS PER ALS PROBLEMES ==========
+
+// Seleccionar problema
+function selectProblem(problemId, clickedElement) {
+  // Amagar tots els problemes
+  const problems = document.querySelectorAll('.problem-container');
+  problems.forEach(p => p.style.display = 'none');
+  
+  // Mostrar el seleccionat
+  const selectedProblem = document.getElementById(problemId);
+  if (selectedProblem) {
+    selectedProblem.style.display = 'block';
+  }
+  
+  // Actualitzar targetes
+  const cards = document.querySelectorAll('.problem-card');
+  cards.forEach(card => card.classList.remove('active'));
+  
+  if (clickedElement) {
+    clickedElement.classList.add('active');
+  }
+  
+  // Scroll suau
+  if (selectedProblem) {
+    setTimeout(() => {
+      selectedProblem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+}
+
+// Mostrar pista
+function showHint(stepId) {
+  const hintBox = document.getElementById(stepId + '-hint');
+  if (hintBox) {
+    hintBox.classList.toggle('show');
+  }
+}
+
+// Alternar solució
+function toggleSolution(problemId) {
+  const solutionBox = document.getElementById(problemId + '-solution');
+  if (solutionBox) {
+    solutionBox.classList.toggle('show');
+  }
+}
+
+// Validar resposta numèrica amb tolerància
+function validateNumeric(value, expected, tolerance = 0.02) {
+  const num = parseFloat(value);
+  if (isNaN(num)) return false;
+  return Math.abs(num - expected) <= Math.abs(expected * tolerance);
+}
+
+// Activar pas
+function activateStep(stepId) {
+  const step = document.getElementById(stepId);
+  if (step) {
+    step.classList.add('active');
+    step.classList.remove('completed');
+    const status = step.querySelector('.step-status');
+    if (status) status.textContent = '⏳';
+  }
+}
+
+// Completar pas
+function completeStep(stepId) {
+  const step = document.getElementById(stepId);
+  if (step) {
+    step.classList.remove('active');
+    step.classList.add('completed');
+    const status = step.querySelector('.step-status');
+    if (status) status.textContent = '✅';
+  }
+}
+
+// Mostrar feedback
+function showFeedback(stepId, message, isSuccess) {
+  const feedback = document.getElementById(stepId + '-feedback');
+  if (feedback) {
+    feedback.textContent = message;
+    feedback.className = 'step-feedback show ' + (isSuccess ? 'success' : 'error');
+  }
+}
+
+// ========== PROBLEMA 1: Funcions específiques ==========
+
+function checkP1Step1() {
+  const input = document.getElementById('p1-h-concentration');
+  const value = parseFloat(input.value);
+  
+  if (validateNumeric(value, 0.06, 0.05)) {
+    input.classList.remove('incorrect');
+    input.classList.add('correct');
+    showFeedback("p1-step1", "✓ Excel·lent! [H⁺] = 0,06 mol/L és correcte!", true);
+    completeStep('p1-step1');
+    
+    // Activar següent pas
+    setTimeout(() => {
+      activateStep('p1-step2');
+      document.getElementById('p1-step2').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 1000);
+  } else {
+    input.classList.remove('correct');
+    input.classList.add('incorrect');
+    showFeedback('p1-step1', '✗ Revisa el càlcul. Recorda: [H⁺] = C × α', false);
+  }
+}
+
+function checkP1Step2() {
+  const input = document.getElementById('p1-ph');
+  const value = parseFloat(input.value);
+  
+  if (validateNumeric(value, 1.22, 0.05)) {
+    input.classList.remove('incorrect');
+    input.classList.add('correct');
+    showFeedback("p1-step2", "✓ Perfecte! pH = 1,22 és correcte!", true);
+    completeStep('p1-step2');
+    
+    // Mostrar missatge de felicitació
+    setTimeout(() => {
+      alert("🎉 Felicitats! Has completat els passos principals del problema 1!\n\nPots veure la solució completa per als apartats b1 i b2.");
+    }, 500);
+  } else {
+    input.classList.remove('correct');
+    input.classList.add('incorrect');
+    showFeedback('p1-step2', '✗ Revisa el càlcul. pH = -log[H⁺]', false);
+  }
+}
+
+// Inicialitzar quan es carrega la pàgina
+
+// ========== PROBLEMA 2: Amoníac ==========
+function checkP2Step1() {
+  const input = document.getElementById('p2-c-initial');
+  const value = parseFloat(input.value);
+  
+  if (validateNumeric(value, 0.15, 0.05)) {
+    input.classList.remove('incorrect');
+    input.classList.add('correct');
+    showFeedback('p2-step1', '✓ Correcte! C = 0,15 M', true);
+    completeStep('p2-step1');
+    setTimeout(() => {
+      activateStep('p2-step2');
+      document.getElementById('p2-step2').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 1000);
+  } else {
+    input.classList.remove('correct');
+    input.classList.add('incorrect');
+    showFeedback('p2-step1', '✗ Revisa: C = n/V', false);
+  }
+}
+
+function checkP2Step2() {
+  const input = document.getElementById('p2-oh');
+  const value = parseFloat(input.value);
+  
+  if (validateNumeric(value, 0.00164, 0.05)) {
+    input.classList.remove('incorrect');
+    input.classList.add('correct');
+    showFeedback("p2-step2", "✓ Excel·lent! [OH⁻] = 0,00164 M", true);
+    completeStep('p2-step2');
+    setTimeout(() => {
+      activateStep('p2-step3');
+      document.getElementById('p2-step3').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 1000);
+  } else {
+    input.classList.remove('correct');
+    input.classList.add('incorrect');
+    showFeedback('p2-step2', '✗ Revisa: [OH⁻] = √(Kb × C)', false);
+  }
+}
+
+function checkP2Step3() {
+  const input = document.getElementById('p2-ph');
+  const value = parseFloat(input.value);
+  
+  if (validateNumeric(value, 11.21, 0.05)) {
+    input.classList.remove('incorrect');
+    input.classList.add('correct');
+    showFeedback('p2-step3', '✓ Perfecte! pH = 11,21', true);
+    completeStep('p2-step3');
+    setTimeout(() => {
+      activateStep('p2-step4');
+      document.getElementById('p2-step4').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 1000);
+  } else {
+    input.classList.remove('correct');
+    input.classList.add('incorrect');
+    showFeedback('p2-step3', '✗ Revisa: pH = 14 - pOH', false);
+  }
+}
+
+function checkP2Step4() {
+  const input = document.getElementById('p2-percentage');
+  const value = parseFloat(input.value);
+  
+  if (validateNumeric(value, 1.09, 0.1)) {
+    input.classList.remove('incorrect');
+    input.classList.add('correct');
+    showFeedback('p2-step4', '✓ Genial! % = 1,09%', true);
+    completeStep('p2-step4');
+    setTimeout(() => {
+      alert("🎉 Problema 2 completat! Has demostrat que domines les bases dèbils!");
+    }, 500);
+  } else {
+    input.classList.remove('correct');
+    input.classList.add('incorrect');
+    showFeedback('p2-step4', '✗ Revisa: % = ([OH⁻]/C) × 100', false);
+  }
+}
+
+// ========== PROBLEMA 3: Àcid Benzoic ==========
+function checkP3Step1() {
+  const inputMols = document.getElementById('p3-mols');
+  const inputConc = document.getElementById('p3-conc');
+  const mols = parseFloat(inputMols.value);
+  const conc = parseFloat(inputConc.value);
+  
+  const molsOk = validateNumeric(mols, 0.00402, 0.05);
+  const concOk = validateNumeric(conc, 0.020, 0.05);
+  
+  if (molsOk && concOk) {
+    inputMols.classList.add('correct');
+    inputConc.classList.add('correct');
+    showFeedback('p3-step1', '✓ Perfecte! n = 0,00402 mol, C = 0,020 M', true);
+    completeStep('p3-step1');
+    setTimeout(() => {
+      activateStep('p3-step2');
+      document.getElementById('p3-step2').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 1000);
+  } else {
+    if (!molsOk) inputMols.classList.add('incorrect');
+    if (!concOk) inputConc.classList.add('incorrect');
+    showFeedback('p3-step1', '✗ Revisa els càlculs: n = m/M, C = n/V', false);
+  }
+}
+
+function checkP3Step2() {
+  const input = document.getElementById('p3-ph');
+  const value = parseFloat(input.value);
+  
+  if (validateNumeric(value, 2.95, 0.05)) {
+    input.classList.remove('incorrect');
+    input.classList.add('correct');
+    showFeedback("p3-step2", "✓ Excel·lent! pH = 2,95", true);
+    completeStep('p3-step2');
+    setTimeout(() => {
+      activateStep('p3-step3');
+      document.getElementById('p3-step3').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 1000);
+  } else {
+    input.classList.remove('correct');
+    input.classList.add('incorrect');
+    showFeedback('p3-step2', '✗ Revisa: [H⁺] = √(Ka × C), pH = -log[H⁺]', false);
+  }
+}
+
+function checkP3Step3() {
+  const input = document.getElementById('p3-vol');
+  const value = parseFloat(input.value);
+  
+  if (validateNumeric(value, 80.4, 0.05)) {
+    input.classList.remove('incorrect');
+    input.classList.add('correct');
+    showFeedback('p3-step3', '✓ Correcte! V = 80,4 mL de NaOH', true);
+    completeStep('p3-step3');
+    setTimeout(() => {
+      alert("🎉 Problema 3 completat! Domines les neutralitzacions!");
+    }, 500);
+  } else {
+    input.classList.remove('correct');
+    input.classList.add('incorrect');
+    showFeedback('p3-step3', '✗ Revisa: V = n/C, converteix a mL', false);
+  }
+}
+
+// ========== PROBLEMA 4: Comparació d'àcids ==========
+function checkP4Step1() {
+  const inputH = document.getElementById('p4-h');
+  const inputKa = document.getElementById('p4-ka');
+  const h = parseFloat(inputH.value);
+  const ka = parseFloat(inputKa.value);
+  
+  const hOk = validateNumeric(h, 0.00380, 0.05);
+  const kaOk = validateNumeric(ka, 0.000148, 0.05);
+  
+  if (hOk && kaOk) {
+    inputH.classList.add('correct');
+    inputKa.classList.add('correct');
+    showFeedback("p4-step1", "✓ Correcte! És l'àcid làctic (Ka = 1,48×10⁻⁴)", true);
+    completeStep('p4-step1');
+    setTimeout(() => {
+      activateStep('p4-step2');
+      document.getElementById('p4-step2').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 1000);
+  } else {
+    if (!hOk) inputH.classList.add('incorrect');
+    if (!kaOk) inputKa.classList.add('incorrect');
+    showFeedback('p4-step1', '✗ Revisa: [H⁺] = 10^(-pH), Ka = [H⁺]²/(C-[H⁺])', false);
+  }
+}
+
+function checkP4Step2() {
+  const input = document.getElementById('p4-conc');
+  const value = parseFloat(input.value);
+  
+  if (validateNumeric(value, 0.100, 0.05)) {
+    input.classList.remove('incorrect');
+    input.classList.add('correct');
+    showFeedback('p4-step2', '✓ Perfecte! C = 0,1 M', true);
+    completeStep('p4-step2');
+    setTimeout(() => {
+      alert("🎉 Problema 4 completat! Excel·lent treball amb les comparacions!");
+    }, 500);
+  } else {
+    input.classList.remove('correct');
+    input.classList.add('incorrect');
+    showFeedback('p4-step2', '✗ Revisa: C = [H⁺]²/Ka', false);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('Problemes interactius inicialitzats!');
+  
+  // Mostrar problema 1 per defecte
+  // Afegir event listeners a les targetes de problemes
+  document.querySelectorAll('.problem-card').forEach(card => {
+    card.addEventListener('click', function() {
+      const problemId = this.getAttribute('data-problem');
+      selectProblem(problemId, this);
+    });
+  });
+  
+  // Mostrar problema 1 per defecte
+  const problem1 = document.getElementById('problem1');
+  if (problem1) {
+    problem1.style.display = 'block';
+  }
+  const firstCard = document.querySelector('.problem-card');
+  if (firstCard) {
+    firstCard.classList.add('active');
+  }
+});
+
+</script>
+
+</body>
+</html>
